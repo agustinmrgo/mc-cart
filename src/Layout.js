@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { routes } from "./routes";
 
 function Layout({ children }) {
   return (
@@ -6,8 +7,8 @@ function Layout({ children }) {
       <header>
         <nav>
           <h4>MasterClass</h4>
-          <Link to="/">Products</Link>
-          <Link to="/cart">Cart</Link>
+          <Link to={routes.products}>Products</Link>
+          <Link to={routes.cart}>Cart</Link>
         </nav>
       </header>
 

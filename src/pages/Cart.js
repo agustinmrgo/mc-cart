@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { routes } from "../routes";
 
 const Cart = ({ cartContent, onSetCartContent }) => {
   return (
@@ -12,7 +13,7 @@ const Cart = ({ cartContent, onSetCartContent }) => {
       {cartContent.length !== 0 && (
         <>
           <div>
-            <Link to="/checkout">
+            <Link to={routes.checkout}>
               <button>✅ Proceed to checkout</button>
             </Link>
           </div>

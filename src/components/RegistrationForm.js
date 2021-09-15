@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { routes } from "../routes";
 
 const RegistrationForm = ({ onNextStep, onPrevStep }) => {
   const [name, setName] = useState("Jane Doe");
@@ -36,7 +37,7 @@ const RegistrationForm = ({ onNextStep, onPrevStep }) => {
 
       <hr />
 
-      <Link to="/cart">
+      <Link to={routes.cart}>
         <button>Cancel</button>
       </Link>
       <button type="submit">Next</button>

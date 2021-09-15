@@ -6,6 +6,8 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 
+import { routes } from "./routes";
+
 const App = () => {
   const [cartContent, setCartContent] = useState([]);
 
@@ -17,20 +19,20 @@ const App = () => {
     <Router>
       <Layout>
         <Switch>
-          <Route path="/checkout">
+          <Route path={routes.checkout}>
             <Checkout
               cartContent={cartContent}
               onOrderConfirmed={handleConfirmOrder}
             />
           </Route>
-          <Route path="/cart">
+          <Route path={routes.cart}>
             <Cart
               cartContent={cartContent}
               onSetCartContent={handleSetCartContent}
             />
           </Route>
 
-          <Route path="/">
+          <Route path={routes.products}>
             <Products
               cartContent={cartContent}
               onSetCartContent={handleSetCartContent}

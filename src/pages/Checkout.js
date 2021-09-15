@@ -52,7 +52,7 @@ const CheckoutPage = ({ onOrderConfirmed }) => {
   ];
 
   useEffect(() => {
-    if (purchaseData.name !== "" && purchaseData.card !== "") {
+    if (purchaseData.name && purchaseData.card) {
       setActiveStep(2);
       onOrderConfirmed();
     }
