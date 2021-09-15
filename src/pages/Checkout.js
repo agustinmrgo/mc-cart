@@ -56,7 +56,7 @@ const CheckoutPage = ({ onOrderConfirmed }) => {
       setActiveStep(2);
       onOrderConfirmed();
     }
-  }, [onOrderConfirmed, purchaseData]);
+  }, [purchaseData]);
 
   return (
     <>
