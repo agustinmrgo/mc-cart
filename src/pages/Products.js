@@ -10,8 +10,8 @@ const ProductsPage = ({ cartContent, onSetCartContent }) => {
     getProducts().then((fetchedProducts) => setProducts(fetchedProducts));
   }, []);
 
-  const handleAddProduct = (productId) =>
-    onSetCartContent([...cartContent, productId]);
+  const handleAddProduct = (product) =>
+    onSetCartContent([...cartContent, product]);
 
   return (
     <>

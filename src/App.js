@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   const [cartContent, setCartContent] = useState([]);
@@ -14,6 +15,9 @@ const App = () => {
     <Router>
       <Layout>
         <Switch>
+          <Route path="/checkout">
+            <Checkout cartContent={cartContent} />
+          </Route>
           <Route path="/cart">
             <Cart
               cartContent={cartContent}

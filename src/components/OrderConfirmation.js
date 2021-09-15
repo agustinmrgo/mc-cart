@@ -1,16 +1,11 @@
-import { useState } from 'react'
-
-const PaymentForm = () => {
-  const [name, setName] = useState('')
-  const [card, setCard] = useState('')
-
+const PaymentForm = ({ purchaseData: { name, card } }) => {
   return (
     <>
-      <h3>Congrats!</h3>
+      <h3>Congrats {name}!</h3>
       <p>You've successfully purchased a MasterClass account.</p>
+      <p>You paid with the following card: {card}</p>
     </>
-  )
-}
+  );
+};
 
-
-export default PaymentForm
+export default PaymentForm;
