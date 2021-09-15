@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom'
-
-import ProductsList from './components/ProductsList'
+import { Link } from "react-router-dom";
 
 function Layout({ children }) {
   return (
@@ -13,11 +11,9 @@ function Layout({ children }) {
         </nav>
       </header>
 
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </section>
   );
 }
 
-export default Layout
+export default Layout;
