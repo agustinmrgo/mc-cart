@@ -11,12 +11,17 @@ const App = () => {
 
   const handleSetCartContent = (newContent) => setCartContent(newContent);
 
+  const handleConfirmOrder = () => setCartContent([]);
+
   return (
     <Router>
       <Layout>
         <Switch>
           <Route path="/checkout">
-            <Checkout cartContent={cartContent} />
+            <Checkout
+              cartContent={cartContent}
+              onOrderConfirmed={handleConfirmOrder}
+            />
           </Route>
           <Route path="/cart">
             <Cart

@@ -4,7 +4,7 @@ import RegistrationForm from "../components/RegistrationForm";
 import PaymentForm from "../components/PaymentForm";
 import OrderConfirmation from "../components/OrderConfirmation";
 
-const CheckoutPage = () => {
+const CheckoutPage = ({ onOrderConfirmed }) => {
   const [purchaseData, setPurchaseData] = useState({ name: "", card: "" });
   const [activeStep, setActiveStep] = useState(0);
 
@@ -54,8 +54,9 @@ const CheckoutPage = () => {
   useEffect(() => {
     if (purchaseData.name !== "" && purchaseData.card !== "") {
       setActiveStep(2);
+      onOrderConfirmed();
     }
-  }, [purchaseData]);
+  }, [onOrderConfirmed, purchaseData]);
 
   return (
     <>
