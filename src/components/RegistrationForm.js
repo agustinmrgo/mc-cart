@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
+import { func } from "prop-types";
 
 const RegistrationForm = ({ onNextStep, onPrevStep }) => {
   const [name, setName] = useState("Jane Doe");
@@ -43,6 +44,11 @@ const RegistrationForm = ({ onNextStep, onPrevStep }) => {
       <button type="submit">Next</button>
     </form>
   );
+};
+
+RegistrationForm.propTypes = {
+  onNextStep: func.isRequired,
+  onPrevStep: func.isRequired,
 };
 
 export default RegistrationForm;

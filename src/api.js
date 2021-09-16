@@ -6,6 +6,10 @@ export const getProducts = async () => {
     { id: 1, name: "Apple 🍎" },
     { id: 2, name: "Orange 🍊" },
     { id: 3, name: "Pinapple 🍍" },
+    { id: 4, name: "Watermelon 🍉" },
+    { id: 5, name: "Banana 🍌" },
+    { id: 6, name: "Strawberry 🍓" },
+    { id: 7, name: "Blueberry 🫐" },
   ];
 };
 

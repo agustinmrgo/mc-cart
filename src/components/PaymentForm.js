@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { func } from "prop-types";
 
 import { makePurchase } from "../api";
 
@@ -43,6 +44,11 @@ const PaymentForm = ({ onPrevStep, onPurchase }) => {
       <button type="submit">Next</button>
     </form>
   );
+};
+
+PaymentForm.propTypes = {
+  onPrevStep: func.isRequired,
+  onPurchase: func.isRequired,
 };
 
 export default PaymentForm;

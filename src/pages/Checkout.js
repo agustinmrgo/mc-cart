@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { func } from "prop-types";
 
 import RegistrationForm from "../components/RegistrationForm";
 import PaymentForm from "../components/PaymentForm";
@@ -64,6 +65,10 @@ const CheckoutPage = ({ onOrderConfirmed }) => {
       {steps[activeStep].component}
     </>
   );
+};
+
+CheckoutPage.propTypes = {
+  onOrderConfirmed: func.isRequired,
 };
 
 export default CheckoutPage;

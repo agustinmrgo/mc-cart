@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { array, func } from "prop-types";
 
-import ProductList from "../components/ProductsList";
+import ProductList from "../components/products/productsList/ProductsList";
 import { getProducts } from "../api";
 
 const ProductsPage = ({ cartContent, onSetCartContent }) => {
@@ -28,6 +29,11 @@ const ProductsPage = ({ cartContent, onSetCartContent }) => {
       <ProductList products={products} onProductAdded={handleAddProduct} />
     </>
   );
+};
+
+ProductsPage.propTypes = {
+  cartContent: array.isRequired,
+  onsetCart: func.isRequired,
 };
 
 export default ProductsPage;

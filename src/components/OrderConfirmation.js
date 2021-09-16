@@ -1,3 +1,5 @@
+import { string } from "prop-types";
+
 const PaymentForm = ({ purchaseData: { name, card } }) => {
   return (
     <>
@@ -6,6 +8,11 @@ const PaymentForm = ({ purchaseData: { name, card } }) => {
       <p>You paid with the following card: {card}</p>
     </>
   );
+};
+
+PaymentForm.propTypes = {
+  name: string.isRequired,
+  card: string.isRequired,
 };
 
 export default PaymentForm;
