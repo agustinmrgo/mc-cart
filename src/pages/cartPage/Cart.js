@@ -5,6 +5,28 @@ import { array, func } from "prop-types";
 import "./cart.css";
 
 const Cart = ({ cartContent, onSetCartContent }) => {
+  const handleAddSingleProduct = (newProduct) => {
+    const productInCart = cartContent.find(
+      (cartProduct) => cartProduct.id === newProduct.id
+    );
+    productInCart.quantity++;
+    onSetCartContent([...cartContent]);
+  };
+
+  const handleRemoveSingleProduct = (newProduct) => {
+    const productInCart = cartContent.find(
+      (cartProduct) => cartProduct.id === newProduct.id
+    );
+    if (productInCart.quantity > 1) {
+      productInCart.quantity--;
+      onSetCartContent([...cartContent]);
+    } else {
+      onSetCartContent([
+        ...cartContent.filter((cartItem) => cartItem.id !== productInCart.id),
+      ]);
+    }
+  };
+
   return (
     <>
       <h1>Cart:</h1>
@@ -12,7 +34,15 @@ const Cart = ({ cartContent, onSetCartContent }) => {
         {cartContent.map((cartItem, index) => (
           <li key={`${cartItem.id}_${index}`} className="cart-item">
             <span>{cartItem.name}</span>
-            {cartItem.quantity > 1 && <span> - Qty: {cartItem.quantity}</span>}
+            <span className="quantity-container">
+              <span>Qty: {cartItem.quantity}</span>
+              <button onClick={() => handleAddSingleProduct(cartItem)}>
+                ➕
+              </button>
+              <button onClick={() => handleRemoveSingleProduct(cartItem)}>
+                ➖
+              </button>
+            </span>
           </li>
         ))}
       </ul>

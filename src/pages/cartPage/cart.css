@@ -5,3 +5,17 @@
 .cart-item {
   margin-bottom: 10px;
 }
+
+.quantity-container {
+  padding: 0px 10px;
+  border-left: 2px solid grey;
+  margin-left: 15px;
+}
+
+.quantity-container span {
+  margin: 0 5px;
+}
+.quantity-container button {
+  margin: 0 3px;
+  padding: 0px 3px;
+}
