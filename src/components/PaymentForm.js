@@ -1,33 +1,37 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-const PaymentForm = () => {
-  const [name, setName] = useState('JANE M. DOE')
-  const [card, setCard] = useState('4242 4242 4242 4242')
+import { makePurchase } from "../api";
+
+const PaymentForm = ({ onPrevStep, onPurchase }) => {
+  const [name, setName] = useState("JANE M. DOE");
+  const [card, setCard] = useState("4242 4242 4242 4242");
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log({ name, card })
-  }
+    event.preventDefault();
+    makePurchase().then(() => {
+      onPurchase(name, card);
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor='name'>Name</label>
+        <label htmlFor="name">Name</label>
         <br />
         <input
-          type='text'
-          name='name'
+          type="text"
+          name="name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
       </div>
 
       <div>
-        <label htmlFor='name'>Credit Card</label>
+        <label htmlFor="name">Credit Card</label>
         <br />
         <input
-          type='text'
-          name='card'
+          type="text"
+          name="card"
           value={card}
           onChange={(event) => setCard(event.target.value)}
         />
@@ -35,11 +39,10 @@ const PaymentForm = () => {
 
       <hr />
 
-      <button>Back</button>
-      <button type='submit'>Next</button>
+      <button onClick={() => onPrevStep()}>Back</button>
+      <button type="submit">Next</button>
     </form>
-  )
-}
+  );
+};
 
-
-export default PaymentForm
+export default PaymentForm;
