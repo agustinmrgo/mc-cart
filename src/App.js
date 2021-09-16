@@ -9,9 +9,14 @@ import Checkout from "./pages/Checkout";
 import { routes } from "./routes";
 
 const App = () => {
-  const [cartContent, setCartContent] = useState([]);
+  const [cartContent, setCartContent] = useState(
+    sessionStorage.cartContent ? JSON.parse(sessionStorage.cartContent) : []
+  );
 
-  const handleSetCartContent = (newContent) => setCartContent(newContent);
+  const handleSetCartContent = (newContent) => {
+    setCartContent(newContent);
+    sessionStorage.setItem("cartContent", JSON.stringify(newContent));
+  };
 
   const handleConfirmOrder = () => setCartContent([]);
 

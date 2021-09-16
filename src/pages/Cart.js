@@ -7,20 +7,22 @@ const Cart = ({ cartContent, onSetCartContent }) => {
       <h1>Cart:</h1>
       <ul>
         {cartContent.map((cartItem, index) => (
-          <li key={`${cartItem.id}_${index}`}>{cartItem.name}</li>
+          <li key={`${cartItem.id}_${index}`} style={{ marginBottom: 10 }}>
+            <span>{cartItem.name}</span>
+            {cartItem.quantity > 1 && <span> - Qty: {cartItem.quantity}</span>}
+          </li>
         ))}
       </ul>
       {cartContent.length !== 0 && (
         <>
-          <div>
+          <span>
+            <button onClick={() => onSetCartContent([])}>❌ Clear cart</button>
+          </span>
+          <span style={{ marginLeft: 10 }}>
             <Link to={routes.checkout}>
               <button>✅ Proceed to checkout</button>
             </Link>
-          </div>
-
-          <div>
-            <button onClick={() => onSetCartContent([])}>❌ Clear cart</button>
-          </div>
+          </span>
         </>
       )}
       {cartContent.length === 0 && <p>🛒 Cart is empty! 🛒 </p>}

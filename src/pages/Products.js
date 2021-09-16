@@ -10,8 +10,17 @@ const ProductsPage = ({ cartContent, onSetCartContent }) => {
     getProducts().then((fetchedProducts) => setProducts(fetchedProducts));
   }, []);
 
-  const handleAddProduct = (product) =>
-    onSetCartContent([...cartContent, product]);
+  const handleAddProduct = (newProduct) => {
+    const productInCart = cartContent.find(
+      (cartProduct) => cartProduct.id === newProduct.id
+    );
+    if (productInCart) {
+      productInCart.quantity++;
+      onSetCartContent([...cartContent]);
+    } else {
+      onSetCartContent([...cartContent, { ...newProduct, quantity: 1 }]);
+    }
+  };
 
   return (
     <>
