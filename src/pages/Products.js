@@ -33,7 +33,7 @@ const ProductsPage = ({ cartContent, onSetCartContent }) => {
 
 ProductsPage.propTypes = {
   cartContent: array.isRequired,
-  onsetCart: func.isRequired,
+  onSetCartContent: func.isRequired,
 };
 
 export default ProductsPage;
