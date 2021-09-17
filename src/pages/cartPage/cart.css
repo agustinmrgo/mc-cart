@@ -15,7 +15,8 @@
 .quantity-container span {
   margin: 0 5px;
 }
+
 .quantity-container button {
   margin: 0 3px;
-  padding: 0px 3px;
+  padding: 0 3px;
 }
