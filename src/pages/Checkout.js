@@ -7,6 +7,7 @@ import OrderConfirmation from "../components/OrderConfirmation";
 
 const CheckoutPage = ({ onOrderConfirmed }) => {
   const [purchaseData, setPurchaseData] = useState({ name: "", card: "" });
+  const [activeStep, setActiveStep] = useState(0);
 
   const handleNextStep = () => setActiveStep(activeStep + 1);
   const handlePrevStep = () =>
@@ -51,20 +52,12 @@ const CheckoutPage = ({ onOrderConfirmed }) => {
     },
   ];
 
-  const [activeStep, setActiveStep] = useState(
-    sessionStorage.activeStep ? sessionStorage.activeStep : 0
-  );
-
   useEffect(() => {
     if (purchaseData.name && purchaseData.card) {
       setActiveStep(2);
       onOrderConfirmed();
     }
   }, [purchaseData]);
-
-  useEffect(() => {
-    sessionStorage.setItem("activeStep", activeStep);
-  }, [activeStep]);
 
   return (
     <>
