@@ -3,21 +3,29 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Layout from "./Layout";
 import Products from "./pages/Products";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cartPage/Cart";
 import Checkout from "./pages/Checkout";
 
 import { routes } from "./routes";
 
 const App = () => {
-  const [cartContent, setCartContent] = useState([]);
+  const [cartContent, setCartContent] = useState(
+    sessionStorage.cartContent ? JSON.parse(sessionStorage.cartContent) : []
+  );
 
-  const handleSetCartContent = (newContent) => setCartContent(newContent);
+  const handleSetCartContent = (newContent) => {
+    setCartContent(newContent);
+    sessionStorage.setItem("cartContent", JSON.stringify(newContent));
+  };
 
   const handleConfirmOrder = () => setCartContent([]);
 
+  const cartTotalAmount = () =>
+    cartContent.reduce((acc, cartItem) => acc + cartItem.quantity, 0);
+
   return (
     <Router>
-      <Layout>
+      <Layout cartTotalAmount={cartTotalAmount()}>
         <Switch>
           <Route path={routes.checkout}>
             <Checkout

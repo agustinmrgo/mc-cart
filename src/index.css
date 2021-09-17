@@ -19,6 +19,10 @@ nav > * {
   margin-right: 1em;
 }
 
+button {
+  cursor: pointer;
+}
+
 hr {
   height: 1px;
   background: gray;

@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
+import { func } from "prop-types";
 
-const RegistrationForm = ({ onNextStep, onPrevStep }) => {
-  const [name, setName] = useState("Jane Doe");
-  const [address, setAddress] = useState("1234 Neat Street");
+const RegistrationForm = ({ onNextStep }) => {
+  const [registrationData, setRegistrationData] = useState(
+    sessionStorage.registrationData
+      ? JSON.parse(sessionStorage.registrationData)
+      : {
+          name: "Jane Doe",
+          address: "1234 Neat Street",
+        }
+  );
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onNextStep();
+  };
+
+  const handleFieldChange = ({ target: { name, value } }) => {
+    const newRegistrationData = { ...registrationData, [name]: value };
+    setRegistrationData(newRegistrationData);
+    sessionStorage.setItem(
+      "registrationData",
+      JSON.stringify(newRegistrationData)
+    );
   };
 
   return (
@@ -19,8 +35,8 @@ const RegistrationForm = ({ onNextStep, onPrevStep }) => {
         <input
           type="text"
           name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          value={registrationData.name}
+          onChange={handleFieldChange}
         />
       </div>
 
@@ -30,8 +46,8 @@ const RegistrationForm = ({ onNextStep, onPrevStep }) => {
         <textarea
           type="text"
           name="address"
-          value={address}
-          onChange={(event) => setAddress(event.target.value)}
+          value={registrationData.address}
+          onChange={handleFieldChange}
         />
       </div>
 
@@ -43,6 +59,10 @@ const RegistrationForm = ({ onNextStep, onPrevStep }) => {
       <button type="submit">Next</button>
     </form>
   );
+};
+
+RegistrationForm.propTypes = {
+  onNextStep: func.isRequired,
 };
 
 export default RegistrationForm;
